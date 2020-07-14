@@ -24,6 +24,7 @@
 	},
 	"homepage": "https://github.com/Lcarv20/Udacity-WP-NLP#readme",
 	"devDependencies": {
+		"nodemon": "^2.0.4",
 		"webpack": "^4.43.0",
 		"webpack-cli": "^3.3.12"
 	},
