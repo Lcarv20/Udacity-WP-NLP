@@ -1,0 +1,26 @@
+{
+  "name": "wp_nlp",
+  "version": "1.0.0",
+  "description": "App to allow users to use nlp on other sites",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lcarv20/Udacity-WP-NLP.git"
+  },
+  "keywords": [
+    "NLP",
+    "Webpack",
+    "Udacity",
+    "Express",
+    "Node"
+  ],
+  "author": "lCarv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lcarv20/Udacity-WP-NLP/issues"
+  },
+  "homepage": "https://github.com/Lcarv20/Udacity-WP-NLP#readme"
+}
