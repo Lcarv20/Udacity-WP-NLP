@@ -6,10 +6,10 @@ const port = 3333
 //************ TESTING SITE ************
 
 //For testing purposes we'll serve directly from the src folder
-app.use(express.static("src/client/views"))
+app.use(express.static("distr"))
 
 app.get("/", (req, res) => {
-	res.sendFile("index.html")
+	res.sendFile("./distr/index.html")
 })
 
 app.get("/test", (req, res) => {
