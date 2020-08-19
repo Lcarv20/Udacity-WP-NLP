@@ -1,3 +1,3 @@
-export function createEl() {
-	alert("this functions works")
+export function alertText() {
+	alert("works")
 }

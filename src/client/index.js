@@ -1,4 +1,7 @@
-import { createEl } from "./js/test.js"
+import { alertText } from "./js/test.js"
 
-alert("Testing entry on WEBPACK")
-createEl()
+document.getElementById("btn").addEventListener("click", (e) => {
+	console.log(e)
+	e.target.innerText = "Clicked hehe"
+	alertText()
+})
