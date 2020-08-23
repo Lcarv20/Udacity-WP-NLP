@@ -8,8 +8,10 @@ module.exports = {
 	mode: "development",
 	devtool: "source-map",
 	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "distr"),
+		// filename: "bundle.js",
+		// path: path.resolve(__dirname, "distr"),
+		libraryTarget: "var",
+		library: "Client",
 	},
 	module: {
 		//Loader for babel (to convert all es6+ into browswer compatible js)

@@ -1,7 +1,5 @@
-import { alertText } from "./js/test.js"
+import { alertText } from "./js/test"
+import { consoleiro } from "./js/test"
+import { servent } from "./js/test"
 
-document.getElementById("btn").addEventListener("click", (e) => {
-	console.log(e)
-	e.target.innerText = "Clicked hehe"
-	alertText()
-})
+export { alertText, consoleiro, servent }
