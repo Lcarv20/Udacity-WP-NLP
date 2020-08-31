@@ -14,22 +14,24 @@ const tempUrl =
 //Dependecies
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
+//Parses data to json
+app.use(bodyParser.json())
 
 //MeaningCloud API Settings
 
-var options = {
-	method: "POST",
-	hostname: "api.meaningcloud.com",
-	path: `/sentiment-2.1?key=${apiKey}&lang=auto&url="${tempUrl}"&model=general`,
-	headers: {},
-	maxRedirects: 20,
-}
+// var options = {
+// 	method: "POST",
+// 	hostname: "api.meaningcloud.com",
+// 	path: `/sentiment-2.1?key=${apiKey}&lang=auto&url="${tempUrl}"&model=general`,
+// 	headers: {},
+// 	maxRedirects: 20,
+// }
 
-fetch(
-	`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=auto&url=${tempUrl}&model=general`
-)
-	.then((data) => data.json())
-	.then((data) => console.log(data))
+// fetch(
+// 	`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=auto&url=${tempUrl}&model=general`
+// )
+// 	.then((data) => data.json())
+// 	.then((data) => console.log(data))
 
 //************ TESTING SITE ************
 //For testing purposes we'll serve directly from the src folder
@@ -43,6 +45,12 @@ app.get("/test", (req, res) => {
 	console.log("Request Made")
 	res.send({ joakin: "14" })
 })
+
+app.post("/tester", (req, res) => {
+	console.log("post made", req.body)
+	res.send({ jon: 14 })
+})
+
 //*************************************
 
 app.listen(port, function () {
