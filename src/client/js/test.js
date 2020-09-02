@@ -1,7 +1,7 @@
 export function testPost() {
 	document.getElementById("submiss").addEventListener("click", function () {
 		let content = document.getElementById("texto").value
-
+		document.getElementById("result").innerHTML = "Loading"
 		postData("http://localhost:8081/tester", { value: content }).then(
 			(data) => {
 				//console.log(data)
