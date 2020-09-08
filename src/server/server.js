@@ -16,9 +16,9 @@ app.use(bodyParser.json())
 const port = process.env.PORT
 const apiKey = process.env.API_KEY
 
-//************ TESTING SITE ************
+//************************
 //For testing purposes we'll serve directly from the src folder
-app.use(express.static("distr"))
+app.use(express.static("dist"))
 
 function urlChecker(str) {
 	let pattern = new RegExp(
@@ -33,7 +33,7 @@ function urlChecker(str) {
 	return !!pattern.test(str)
 }
 
-app.post("/tester", (req, res) => {
+app.post("/textanalysis", (req, res) => {
 	console.log("Requested: ", req.body.value)
 	//Resolving Unescaped Characteres
 	let uri = req.body.value
@@ -60,7 +60,6 @@ app.post("/tester", (req, res) => {
 			res.send("Sorry, something went wrong")
 		})
 })
-
 //*************************************
 
 app.listen(port, function () {

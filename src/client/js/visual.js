@@ -1,3 +1,3 @@
-export function resultBoard() {
-	const target = document.getElementById("result")
+export function showResultBoard() {
+	document.getElementById("result").style.display = "block"
 }

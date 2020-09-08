@@ -6,12 +6,34 @@
 	</head>
 
 	<body>
-		<h2>Welcome!</h2>
+		<h1>Welcome!</h1>
+		<h2>Udacity NLP Exercise</h2>
 
-		<div>
-			<input type="text" name="someText" id="texto" />
-			<input id="submiss" type="submit" value="submit" />
+		<div class="wrapper">
+			<textarea
+				name="inputText"
+				id="texto"
+				placeholder="Insert a link or a text"
+			></textarea
+			><br />
+			<input
+				id="submiss"
+				type="submit"
+				class="default"
+				value="submit"
+				onclick="Client.showResultBoard()"
+			/>
+			<table id="result"></table>
 		</div>
-		<div id="result"></div>
+
+		<script>
+			// Check that service workers are supported
+			if ("serviceWorker" in navigator) {
+				// Use the window load event to keep the page load performant
+				window.addEventListener("load", () => {
+					navigator.serviceWorker.register("/service-worker.js")
+				})
+			}
+		</script>
 	</body>
 </html>

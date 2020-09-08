@@ -1,13 +1,37 @@
-export function testPost() {
+export function dataGeter() {
 	document.getElementById("submiss").addEventListener("click", function () {
 		let content = document.getElementById("texto").value
+		if (content.length <= 1) {
+			document.getElementById("result").innerHTML =
+				"Please Introduce some text to start analysis!"
+			return
+		}
 		document.getElementById("result").innerHTML = "Loading"
-		postData("http://localhost:8081/tester", { value: content }).then(
+		postData("http://localhost:8081/textanalysis", { value: content }).then(
 			(data) => {
 				//console.log(data)
-				document.getElementById(
-					"result"
-				).innerText = `${data.score_tag} / ${data.agreement} / ${data.subjectivity} / ${data.confidence} / ${data.irony}`
+				document.getElementById("result").innerHTML = `
+				<tr>
+				<th class="itemList">Score</th>
+				<td>${data.score_tag}</td>
+				</tr>
+				<tr>
+				<th class="itemList">Agreement</th>
+				<td>${data.agreement}</td>
+				</tr>
+				<tr>
+				<th class="itemList">Subjectivity</th>
+				<td>${data.subjectivity}</td>
+				</tr>
+				<tr>
+				<th class="itemList">Confidence</th>
+				<td>${data.confidence}</td>
+				</tr>
+				<tr>
+				<th class="itemList">Irony</th>
+				<td>${data.irony}</td>
+				</tr>
+				`
 			}
 		)
 	})

@@ -1,4 +1,7 @@
-import { servent } from "./js/test"
-import { testPost } from "./js/test"
+import { dataGeter } from "./js/fetcher"
+import { showResultBoard } from "./js/visual"
+import "./styles/styles.scss"
 
-testPost()
+dataGeter()
+
+export { showResultBoard }

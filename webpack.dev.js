@@ -8,8 +8,6 @@ module.exports = {
 	mode: "development",
 	devtool: "source-map",
 	output: {
-		// filename: "bundle.js",
-		// path: path.resolve(__dirname, "distr"),
 		libraryTarget: "var",
 		library: "Client",
 	},
@@ -20,6 +18,10 @@ module.exports = {
 				test: "/.js$/",
 				exclude: /node_modules/,
 				loader: "babel-loader",
+			},
+			{
+				test: /\.scss$/,
+				use: ["style-loader", "css-loader", "sass-loader"],
 			},
 		],
 	},
@@ -39,23 +41,3 @@ module.exports = {
 		}),
 	],
 }
-
-/* 
-Loaders:
-	- @babel/core @babel/preset-env babel-loader (installed)
-	- style-loader node-sass css-loader sass-loader
-
-Plugins:
-	- clean-webpack-plugin
-	- html-webpack-plugin (installed)
-	- mini-css-extract-plugin
-	- optimize-css-assets-webpack-plugin
-	- terser-webpack-plugin
-
-
-Outputs,
-Dev Mode,
-Test Mode,
-minify plugins.
-hot reload(dev)
-*/

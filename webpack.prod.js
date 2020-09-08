@@ -1,14 +1,20 @@
 const path = require("path")
 const webpack = require("webpack")
 const htmlPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
+const WorkboxPlugin = require("workbox-webpack-plugin")
 
 module.exports = {
 	entry: "./src/client/index.js",
 	mode: "production",
+	optimization: {
+		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+	},
 	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "distr"),
+		libraryTarget: "var",
+		library: "Client",
 	},
 	module: {
 		//Loader for babel (to convert all es6+ into browswer compatible js)
@@ -18,6 +24,10 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: "babel-loader",
 			},
+			{
+				test: /\.scss$/,
+				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+			},
 		],
 	},
 	plugins: [
@@ -25,34 +35,7 @@ module.exports = {
 			template: "./src/client/views/index.html",
 			filename: "./index.html",
 		}),
-		new CleanWebpackPlugin({
-			// Simulate the removal of files
-			dry: true,
-			// Write Logs to Console
-			verbose: true,
-			// Automatically remove all unused webpack assets on rebuild
-			cleanStaleWebpackAssets: true,
-			protectWebpackAssets: false,
-		}),
+		new MiniCssExtractPlugin({ filename: "[name].css" }),
+		new WorkboxPlugin.GenerateSW(),
 	],
 }
-
-/* 
-Loaders:
-	- @babel/core @babel/preset-env babel-loader (installed)
-	- style-loader node-sass css-loader sass-loader
-
-Plugins:
-	- clean-webpack-plugin
-	- html-webpack-plugin (installed)
-	- mini-css-extract-plugin
-	- optimize-css-assets-webpack-plugin
-	- terser-webpack-plugin
-
-
-Outputs,
-Dev Mode,
-Test Mode,
-minify plugins.
-hot reload(dev)
-*/
