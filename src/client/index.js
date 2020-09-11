@@ -1,5 +1,5 @@
 import { dataGeter } from "./js/fetcher"
-import { showResultBoard } from "./js/visual"
+import { showResultBoard } from "./js/templates"
 import "./styles/styles.scss"
 
 dataGeter()

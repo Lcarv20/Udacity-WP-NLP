@@ -4,6 +4,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const fetch = require("node-fetch")
 require("dotenv").config({ debug: process.env.DEBUG })
+const urlChecker = require("./urlChecker")
 
 //Dependecies
 app.use(cors())
@@ -19,19 +20,6 @@ const apiKey = process.env.API_KEY
 //************************
 //For testing purposes we'll serve directly from the src folder
 app.use(express.static("dist"))
-
-function urlChecker(str) {
-	let pattern = new RegExp(
-		"^(https?:\\/\\/)?" + // protocol
-			"((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-			"((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-			"(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-			"(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-			"(\\#[-a-z\\d_]*)?$",
-		"i"
-	) // fragment locator
-	return !!pattern.test(str)
-}
 
 app.post("/textanalysis", (req, res) => {
 	console.log("Requested: ", req.body.value)
@@ -65,3 +53,5 @@ app.post("/textanalysis", (req, res) => {
 app.listen(port, function () {
 	console.log("Running on \nhttp://localhost:" + port)
 })
+
+module.exports = urlChecker

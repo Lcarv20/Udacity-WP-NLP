@@ -1,3 +1,4 @@
+import { postRequest } from "./templates"
 export function dataGeter() {
 	document.getElementById("submiss").addEventListener("click", function () {
 		let content = document.getElementById("texto").value
@@ -39,15 +40,7 @@ export function dataGeter() {
 
 const postData = async function (url, data) {
 	//console.log(data)
-	const method = {
-		method: "POST",
-		credentials: "same-origin",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(data),
-	}
-	const response = await fetch(url, method)
+	const response = await fetch(url, postRequest(data))
 
 	try {
 		const newData = await response.json()
@@ -62,4 +55,8 @@ const postData = async function (url, data) {
 			"Ups! Something went wrong. Please try again maybe with a different url/text"
 		)
 	}
+}
+
+export function tester(a, b) {
+	return a + b
 }
