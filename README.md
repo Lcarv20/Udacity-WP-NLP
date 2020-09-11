@@ -16,7 +16,8 @@ For this project I have used the following tools:
 
 If you want to run full dev mode, open 3 terminal tabs and on each run one of the following comamnds
 
-1. `npm run-build-dev` (will run hot reload from webpack at port 8080)
+1. `npm run build-prod` (it will create dist folder to serve)
+1. `npm run build-dev` (will run hot reload from webpack at port 8080)
 1. `npm start` (will run your server code at port 8081)
 1. `npm test`
 
